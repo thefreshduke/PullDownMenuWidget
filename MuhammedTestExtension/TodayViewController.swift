@@ -12,6 +12,7 @@ import NotificationCenter
 class TodayViewController: UIViewController, NCWidgetProviding {
     
     var currentSize = CGSize()
+    var widgetHeight: CGFloat = 80.0
     var isWidgetExpanded = Bool()
     
     @IBOutlet weak var widgetSizeButton: UIButton!
@@ -51,14 +52,14 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     func shrinkWidget() {
-        currentSize.height = 80.0
+        currentSize.height = widgetHeight
         self.preferredContentSize = currentSize
         isWidgetExpanded = false
         widgetSizeButton.setTitle("Expand", forState: UIControlState.Normal)
     }
     
     func expandWidget() {
-        currentSize.height = 160.0
+        currentSize.height = widgetHeight * 2
         self.preferredContentSize = currentSize
         isWidgetExpanded = true
         widgetSizeButton.setTitle("Shrink", forState: UIControlState.Normal)
